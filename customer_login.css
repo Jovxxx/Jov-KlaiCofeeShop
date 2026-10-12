@@ -23,6 +23,11 @@ body {
     align-items: center;
 
     padding: 20px;
+
+    background-image: url(coffee_backgound.png);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: repeat-y;
 }
 
 /* ---------- Login Box ---------- */
