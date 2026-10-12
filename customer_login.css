@@ -15,7 +15,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-   
+    background: linear-gradient(135deg, #7b4b2a, #3d2516);
     min-height: 100vh;
 
     display: flex;
@@ -24,7 +24,8 @@ body {
 
     padding: 20px;
 
-    background-image: url(coffee_backgound.png);
+
+     background-image: url(coffee_backgound.png);
     background-position: center;
     background-attachment: fixed;
     background-repeat: repeat-y;
