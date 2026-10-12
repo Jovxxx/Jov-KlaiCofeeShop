@@ -1599,8 +1599,68 @@ function renderMenuOverviewDisplayMode(row, item) {
 
     actions.appendChild(editBtn);
 
+    // Delete button
+const deleteBtn = document.createElement("button");
+
+deleteBtn.className = "category-btn delete";
+deleteBtn.textContent = "Delete";
+
+deleteBtn.addEventListener("click", () => {
+    deleteMenuOverviewItem(
+        item.menu_id,
+        item.item_name,
+        deleteBtn
+    );
+});
+
+actions.appendChild(deleteBtn);
+
     row.appendChild(info);
     row.appendChild(actions);
+
+}
+
+
+/* ==========================================================
+   DELETE MENU ITEM (admin)
+   Same delete as the employee dashboard's version - permanent,
+   safe (order history keeps its item_name/price snapshot via
+   order_items even after the menu row and its recipe are gone).
+========================================================== */
+
+async function deleteMenuOverviewItem(menuId, itemName, button) {
+
+    const confirmed = window.confirm(
+
+        `Permanently delete "${itemName}"? This also removes its recipe (if any). ` +
+        `Past orders that included it are not affected. This cannot be undone.`
+
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    button.disabled = true;
+
+    const { error } = await db
+
+        .from("menu")
+
+        .delete()
+
+        .eq("menu_id", menuId);
+
+    if (error) {
+
+        console.error(error);
+        alert("Could not delete this item. Please try again.");
+        button.disabled = false;
+        return;
+
+    }
+
+    await loadMenuOverview();
 
 }
 
