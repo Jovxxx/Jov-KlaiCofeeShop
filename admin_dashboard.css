@@ -674,6 +674,21 @@ body {
 }
 
 .category-btn.delete {
+    background-color: #7f1d1d;
+    color: white;
+    border: 1px solid #ef4444;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.category-btn.delete:hover {
+    background-color: #b91c1c;
+}
+
+
+.category-btn.delete {
 
     background: #e74c3c;
     color: white;
